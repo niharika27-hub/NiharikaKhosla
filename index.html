@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niharika Khosla - Frontend Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: #0f0f23;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* Background Animation */
+        .bg-animated {
+            background: linear-gradient(-45deg, #0f0f23, #1a1a3e, #2d1b69, #1e1e3f);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float-particle 20s infinite linear;
+        }
+        
+        @keyframes float-particle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .hero-image {
+            width: 450px;
+            height: 380px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: white;
+            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.4);
+            animation: heroFloat 6s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: #ffffff;
+        }
+        
+        .social-icon:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .skill-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.6s;
+        }
+        
+        .skill-card:hover::before {
+            left: 100%;
+        }
+        
+        .skill-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+        }
+        
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .skill-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-card:hover .skill-name {
+            color: #667eea;
+        }
+        
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            border-radius: 20px;
+            overflow: hidden;
+           
+        }
+        
+        .project-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
+        }
+        
+        .certificate-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.8s;
+        }
+        
+        .certificate-card:hover::before {
+            left: 100%;
+        }
+        
+        .certificate-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
+        }
+        
+        .certificate-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .certificate-card:hover .certificate-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .certificate-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .certificate-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .certificate-card:hover .certificate-title {
+            color: #667eea;
+        }
+        
+        .certificate-org {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .certificate-desc {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .certificate-link {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #667eea;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 25px;
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        .certificate-link:hover {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+        
+        .contact-link {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            border-radius: 16px;
+        }
+        
+        .contact-link:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateX(10px);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            border: 2px solid rgba(102, 126, 234, 0.5);
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-color: #667eea;
+            transform: translateY(-3px);
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a3e;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+        }
+        
+        .navbar-blur {
+            background: rgba(15, 15, 35, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .typing-animation {
+            border-right: 2px solid #667eea;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #667eea; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-xl font-bold gradient-text">Niharika Khosla</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white">Home</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white">About</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-white">Projects</a>
+                    <a href="#certificates" class="nav-link text-gray-300 hover:text-white">Certificates</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden navbar-blur">
+            <div class="px-6 py-4 space-y-3">
+                <a href="#home" class="block text-gray-300 hover:text-white transition duration-300">Home</a>
+                <a href="#about" class="block text-gray-300 hover:text-white transition duration-300">About</a>
+                <a href="#skills" class="block text-gray-300 hover:text-white transition duration-300">Skills</a>
+                <a href="#projects" class="block text-gray-300 hover:text-white transition duration-300">Projects</a>
+                <a href="#certificates" class="block text-gray-300 hover:text-white transition duration-300">Certificates</a>
+                <a href="#contact" class="block text-gray-300 hover:text-white transition duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen bg-animated relative overflow-hidden">
+        <!-- Floating Particles -->
+        <div class="particles-container">
+            <div class="particle" style="left: 10%; width: 4px; height: 4px; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; width: 6px; height: 6px; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 30%; width: 3px; height: 3px; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 40%; width: 5px; height: 5px; animation-delay: 6s;"></div>
+            <div class="particle" style="left: 50%; width: 4px; height: 4px; animation-delay: 8s;"></div>
+            <div class="particle" style="left: 60%; width: 6px; height: 6px; animation-delay: 10s;"></div>
+            <div class="particle" style="left: 70%; width: 3px; height: 3px; animation-delay: 12s;"></div>
+            <div class="particle" style="left: 80%; width: 5px; height: 5px; animation-delay: 14s;"></div>
+            <div class="particle" style="left: 90%; width: 4px; height: 4px; animation-delay: 16s;"></div>
+        </div>
+        
+        <div class="flex items-center justify-center min-h-screen pt-20 px-6">
+            <div class="max-w-7xl mx-auto w-full">
+                <div class="grid lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
+                    <!-- Left Content Div -->
+                    <div class="flex flex-col justify-center space-y-8">
+                        <div class="slide-in-left">
+                            <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold mb-6 leading-tight">
+                                <span class="gradient-text">Hiii...</span>
+                            </h1>
+                            <div class="text-2xl md:text-3xl lg:text-4xl font-light text-gray-300 mb-4">
+                                I'm <span class="font-semibold gradient-text">Niharika Khosla</span>
+                            </div>
+                            <div class="text-lg md:text-xl text-gray-400 mb-8 typing-animation max-w-lg">
+                                Frontend Developer | CSE 2nd Year Student at Chitkara University, Rajpura
+                            </div>
+                        </div>
+                        
+                        <div class="slide-in-left" style="animation-delay: 0.3s;">
+                            <p class="text-lg text-gray-400 mb-8 max-w-xl leading-relaxed">
+                                Passionate about creating beautiful, responsive web experiences that bring ideas to life through clean code and innovative design.
+                            </p>
+                        </div>
+                        
+                        <!-- Social Icons -->
+                        <div class="slide-in-left flex space-x-6 mb-8" style="animation-delay: 0.6s;">
+                            <a href="https://github.com/niharika27-hub" class="social-icon">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/niharika-khosla-95357b333/" class="social-icon">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="https://www.instagram.com/niharika.khosla22?igsh=aWV4bjFyNGdkMHR3" class="social-icon">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="slide-in-left flex flex-col sm:flex-row gap-6" style="animation-delay: 0.9s;">
+                            <a href="#contact" class="btn-primary text-white font-semibold inline-block text-center">
+                                Get In Touch
+                            </a>
+                            <a href="#projects" class="btn-secondary text-white font-semibold inline-block text-center">
+                                View My Work
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Photo Div -->
+                    <div class="flex justify-center lg:justify-end items-center">
+                        <div class="hero-image slide-in-right">
+                            <img src="./images/niharika.png" height="800px" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title fade-in">About</h2>
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-lg md:text-xl text-gray-300 leading-relaxed fade-in">
+                        I'm a Computer Science student and frontend developer passionate about creating clean and interactive web applications. My journey in web development is driven by curiosity and a passion for creating digital experiences that matter.
+                    </p>
+                    <div class="mt-8 fade-in">
+                        <p class="text-gray-400">
+                            Currently pursuing my CSE degree at Chitkara University, Rajpura, I spend my time learning new technologies, building projects, and exploring the endless possibilities of web development. Every line of code I write is a step towards creating something meaningful and impactful.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-12 bg-gray-900/50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title fade-in">Skills</h2>
+            </div>
+            
+            <!-- Tools Section -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-center mb-8 gradient-text fade-in">Tools</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fab fa-github text-3xl"></i>
+                        </div>
+                        <h3 class="skill-name">GitHub</h3>
+                    </div>
+
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fas fa-code text-3xl"></i>
+                        </div>
+                        <h3 class="skill-name">VS Code</h3>
+                    </div>
+
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fas fa-paint-brush text-3xl"></i>
+                        </div>
+                        <h3 class="skill-name">Canvas</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Software Development Section -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-center mb-8 gradient-text fade-in">Software Development</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                    <!-- Programming Languages -->
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fab fa-cuttlefish text-3xl"></i>
+                        </div>
+                        <h3 class="skill-name">C</h3>
+                    </div>
+
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fas fa-code text-3xl"></i>
+                        </div>
+                        <h3 class="skill-name">C++</h3>
+                    </div>
+
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fab fa-python text-3xl"></i>
+                        </div>
+                        <h3 class="skill-name">Python</h3>
+                    </div>
+
+                    <!-- Frontend Development -->
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fab fa-html5 text-3xl"></i>
+                        </div>
+                        <h3 class="skill-name">HTML</h3>
+                    </div>
+
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fab fa-css3-alt text-3xl"></i>
+                        </div>
+                        <h3 class="skill-name">CSS</h3>
+                    </div>
+
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fab fa-js-square text-3xl"></i>
+                        </div>
+                        <h3 class="skill-name">JavaScript</h3>
+                    </div>
+
+                  
+
+                </div>
+            </div>
+
+            <!-- Soft Skills Section -->
+            <div>
+                <h3 class="text-2xl font-bold text-center mb-8 gradient-text fade-in">Soft Skills</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fas fa-users text-3xl"></i>
+                        </div>
+                        <h3 class="skill-name">Teamwork</h3>
+                    </div>
+
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fas fa-lightbulb text-3xl"></i>
+                        </div>
+                        <h3 class="skill-name">Problem-solving</h3>
+                    </div>
+
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fas fa-palette text-3xl"></i>
+                        </div>
+                        <h3 class="skill-name">Creativity</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title fade-in">Featured Projects</h2>
+                <p class="text-lg text-gray-400 fade-in">Here are some of my recent works that showcase my skills</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Amazon Clone -->
+                <div class="project-card p-0 card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 rounded-t-xl flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <i class="fas fa-shopping-cart text-6xl text-white relative z-10"></i>
+                        <div class="absolute bottom-4 left-4 right-4 z-10">
+                            <div class="flex space-x-2">
+                                <span class="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-white">HTML</span>
+                                <span class="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-white">CSS</span>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Amazon Clone</h3>
+                        <p class="text-gray-400 mb-6">Frontend project of amazon clone home page using HTML, CSS and interactive features.</p>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/niharika27-hub/clone" class="text-gray-400 hover:text-white transition duration-300">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="https://clone-six-iota.vercel.app/" class="text-gray-400 hover:text-white transition duration-300">
+                                <i class="fas fa-external-link-alt text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-Commerce Website -->
+                <div class="project-card p-0 card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 rounded-t-xl flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <img src="./images/logomain.jpg">
+                        <div class="absolute bottom-4 left-4 right-4 z-10">
+                            <div class="flex space-x-2">
+                                <span class="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-white">HTML</span>
+                                <span class="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-white">CSS</span>
+                                <span class="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-white">JS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Aayurrattan herbals</h3>
+                        <p class="text-gray-400 mb-6">“Developed a website for Aayurrattan Herbals to showcase herbal products and promote natural wellness online.”</p>
+                        <div class="flex space-x-3">
+                            
+                            <a href="https://aayurrattanherbals.com/index.html" class="text-gray-400 hover:text-white transition duration-300">
+                                <i class="fas fa-external-link-alt text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Online Music Store UI -->
+                <div class="project-card p-0 card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-600 rounded-t-xl flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <img src="./images/cat.png" height="300px">
+                        <div class="absolute bottom-4 left-4 right-4 z-10">
+                            <div class="flex space-x-2">
+                                <span class="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-white">HTML</span>
+                                <span class="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-white">CSS</span>
+                                <span class="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-white">JS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Catifyy</h3>
+                        <p class="text-gray-400 mb-6">Modern styled music store interface with sleek design and smooth interactions.</p>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/niharika27-hub/catifyy" class="text-gray-400 hover:text-white transition duration-300">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="https://catifyy-git-main-niharikakhoslas-projects.vercel.app/" class="text-gray-400 hover:text-white transition duration-300">
+                                <i class="fas fa-external-link-alt text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- chatBOT -->
+                <div class="project-card p-0 card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 rounded-t-xl flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <img src="./images/cu.png" >
+                        <div class="absolute bottom-4 left-4 right-4 z-10">
+                            
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">CU BOT</h3>
+                        <p class="text-gray-400 mb-6">Chitkara University Assistant.
+Get instant answers to your questions about admissions, courses, campus life, and more.</p>
+                        <div class="flex space-x-3">
+
+                              <a href="https://github.com/niharika27-hub/chatbot" class="text-gray-400 hover:text-white transition duration-300">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            
+                            <a href="https://chitkarabot.vercel.app/" class="text-gray-400 hover:text-white transition duration-300">
+                                <i class="fas fa-external-link-alt text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-12 bg-gray-900/50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title fade-in">Certificates</h2>
+                <p class="text-lg text-gray-400 fade-in">My learning journey and professional certifications</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Frontend Development Bootcamp -->
+                <div class="certificate-card fade-in">
+                    <div class="certificate-image mb-4">
+                        <img src="./images/image1.png" alt="Frontend Development Bootcamp Certificate" class="w-full h-32 object-cover rounded-lg" onerror="this.src=''; this.alt='Certificate image failed to load'; this.style.display='none';">
+                    </div>
+                    
+                    <div class="certificate-content">
+                        <h3 class="certificate-title">Finance for everyone </h3>
+                        <p class="certificate-org">Coursera</p>
+                        <p class="certificate-desc">Completed the "Finance for Everyone" course on Coursera, gaining foundational knowledge of financial principles and decision-making.</p>
+                        <a href="./images/finance.pdf" target="_blank" class="certificate-link">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            View Certificate
+                        </a>
+                    </div>
+                </div>
+
+              
+                <div class="certificate-card fade-in">
+                    <div class="certificate-image mb-4">
+                        <img src="./images/image2.png" alt="C++ Programming Basics Certificate" class="w-full h-32 object-cover rounded-lg" onerror="this.src=''; this.alt='Certificate image failed to load'; this.style.display='none';">
+                    </div>
+                   
+                    <div class="certificate-content">
+                        <h3 class="certificate-title">Protecting Business Innovation</h3>
+                        <p class="certificate-org">Coursera</p>
+                        <p class="certificate-desc">Earned the "Protecting Business Innovation" certification on Coursera, exploring strategies for safeguarding intellectual property and business ideas.</p>
+                        <a href="./images/business.pdf" target="_blank" class="certificate-link">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            View Certificate
+                        </a>
+                    </div>
+                </div>
+
+              
+                <div class="certificate-card fade-in">
+                    <div class="certificate-image mb-4">
+                        <img src="./images/image3.png" alt="Python for Everybody Certificate" class="w-full h-32 object-cover rounded-lg" onerror="this.src=''; this.alt='Certificate image failed to load'; this.style.display='none';">
+                    </div>
+                  
+                    <div class="certificate-content">
+                         <h3 class="certificate-title">Digital Transformation in Financial Services</h3>
+                      
+                        <p class="certificate-org">Coursera</p>
+                        <p class="certificate-desc">Achieved certification in "Digital Transformation in Financial Services" on Coursera, focusing on technology-driven change in banking and finance.</p>
+                        <a href="./images/digitaltransformation.pdf" target="_blank" class="certificate-link">
+                           <i class="fas fa-external-link-alt mr-2"></i>
+                            View Certificate
+                        </a>
+                    </div>
+                </div>
+
+                       <div class="certificate-card fade-in">
+                    <div class="certificate-image mb-4">
+                        <img src="./images/image2.png" alt="C++ Programming Basics Certificate" class="w-full h-32 object-cover rounded-lg" onerror="this.src=''; this.alt='Certificate image failed to load'; this.style.display='none';">
+                    </div>
+                   
+                    <div class="certificate-content">
+                        <h3 class="certificate-title">Protecting Business Innovation</h3>
+                        <p class="certificate-org">Coursera</p>
+                        <p class="certificate-desc">Earned the "Protecting Business Innovation" certification on Coursera, exploring strategies for safeguarding intellectual property and business ideas.</p>
+                        <a href="./images/business.pdf" target="_blank" class="certificate-link">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            View Certificate
+                        </a>
+                    </div>
+                </div>
+
+
+
+             
+
+
+
+                <div class="certificate-card fade-in">
+                    <div class="certificate-image mb-4">
+                        <img src="./images/paradox.png" alt="Frontend Development Bootcamp Certificate" class="w-full h-32 object-cover rounded-lg" onerror="this.src=''; this.alt='Certificate image failed to load'; this.style.display='none';">
+                    </div>
+                    
+                    <div class="certificate-content">
+                        <h3 class="certificate-title">The paradox  </h3>
+                        <p class="certificate-org">Coding Ninjas</p>
+                        <p class="certificate-desc">Innovating time space complexity solutions through multiverse</p>
+                        <a href="./images/paradoxpdf.pdf" target="_blank" class="certificate-link">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            View Certificate
+                        </a>
+                    </div>
+                </div>
+
+
+             <div class="certificate-card fade-in">
+                    <div class="certificate-image mb-4">
+                        <img src="./images/somnium.png" alt="Frontend Development Bootcamp Certificate" class="w-full h-32 object-cover rounded-lg" onerror="this.src=''; this.alt='Certificate image failed to load'; this.style.display='none';">
+                    </div>
+                    
+                    <div class="certificate-content">
+                        <h3 class="certificate-title">The Somnium  </h3>
+                        <p class="certificate-org">IEEE-CIET</p>
+                        <p class="certificate-desc">Hackathon</p>
+                        <p class="certificate-desc">Somnium:imagine,built,innovate</p>
+                        <a href="./images/somniumpdf.pdf" target="_blank" class="certificate-link">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            View Certificate
+                        </a>
+                    </div>
+                </div>
+                
+
+                 <div class="certificate-card fade-in">
+                    <div class="certificate-image mb-4">
+                        <img src="./images/ai.png" alt="Frontend Development Bootcamp Certificate" class="w-full h-32 object-cover rounded-lg" onerror="this.src=''; this.alt='Certificate image failed to load'; this.style.display='none';">
+                    </div>
+                    
+                    <div class="certificate-content">
+                        <h3 class="certificate-title">The Rudiments of Artificial Intelligence, ChatGPT, Deepseek, Grok and Metaverse </h3>
+                        <p class="certificate-org">Chitkara University, Punjab</p>
+                        <p class="certificate-desc">Certificate of Completion: AI, ChatGPT, Deepseek, Grok, and Metaverse Masterclass</p>
+                        
+                        <a href="./images/somnium.png" target="_blank" class="certificate-link">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            View Certificate
+                        </a>
+                    </div>
+                </div>
+                
+
+
+
+
+
+
+                   
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title fade-in">Contact Me</h2>
+                <p class="text-lg text-gray-400 fade-in">I'm always open to discussing new opportunities and collaborations</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Contact Links -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 fade-in">
+                    <a href="mailto:niharikakhosla20@gmail.com" class="contact-link flex flex-col items-center space-y-4 p-6 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-700 rounded-xl flex items-center justify-center shadow-lg">
+                            <i class="fas fa-envelope text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-lg">Email</div>
+                            <div class="text-gray-400 text-sm">niharikakhosla20@gmail.com</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://github.com/niharika27-hub" class="contact-link flex flex-col items-center space-y-4 p-6 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-xl flex items-center justify-center shadow-lg">
+                            <i class="fab fa-github text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-lg">GitHub</div>
+                            <div class="text-gray-400 text-sm">View my repositories</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/in/niharika-khosla-95357b333/" class="contact-link flex flex-col items-center space-y-4 p-6 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center shadow-lg">
+                            <i class="fab fa-linkedin text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-lg">LinkedIn</div>
+                            <div class="text-gray-400 text-sm">Professional network</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/niharika.khosla22?igsh=aWV4bjFyNGdkMHR3" class="contact-link flex flex-col items-center space-y-4 p-6 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                            <i class="fab fa-instagram text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-lg">Instagram</div>
+                            <div class="text-gray-400 text-sm">Coding journey</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-gray-400">&copy; 2024 Niharika Khosla. All rights reserved.</p>
+            <p class="text-gray-500 text-sm mt-2">Built with passion for frontend development</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('navbar-blur');
+            } else {
+                navbar.classList.remove('navbar-blur');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animation elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+
+
+        // Initialize hero animations with staggered delays
+        setTimeout(() => {
+            document.querySelectorAll('#home .slide-in-left').forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, index * 300);
+            });
+            
+            setTimeout(() => {
+                document.querySelector('#home .slide-in-right').classList.add('visible');
+            }, 600);
+        }, 500);
+
+        // Typing animation effect
+        const typingElement = document.querySelector('.typing-animation');
+        if (typingElement) {
+            const text = typingElement.textContent;
+            typingElement.textContent = '';
+            let i = 0;
+            
+            setTimeout(() => {
+                const typeWriter = () => {
+                    if (i < text.length) {
+                        typingElement.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 50);
+                    } else {
+                        typingElement.classList.remove('typing-animation');
+                    }
+                };
+                typeWriter();
+            }, 1500);
+        }
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('.hero-image');
+            if (heroImage) {
+                heroImage.style.transform = `translateY(${scrolled * 0.1}px) rotate(${scrolled * 0.02}deg)`;
+            }
+        });
+
+        // Add cursor trail effect
+        let mouseX = 0, mouseY = 0;
+        let trailX = 0, trailY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Smooth cursor trail
+        function animateTrail() {
+            trailX += (mouseX - trailX) * 0.1;
+            trailY += (mouseY - trailY) * 0.1;
+            
+            requestAnimationFrame(animateTrail);
+        }
+        animateTrail();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9801dbcbb01e8a02',t:'MTc1ODA0MTM4Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
